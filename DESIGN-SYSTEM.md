@@ -4,8 +4,9 @@ Lead design strategist: Alex Pereira's Grow with Alex method. Every rule below t
 documents in `reference/grow-with-alex/`. The account's own positioning comes from
 `reference/golden-horseshoe-watch/`. This file is the spec a skill will eventually run from.
 
-Palette and fonts are **current defaults, not final**: Alvin is picking his own. Structure, layout,
-imagery rules and tests are locked.
+Fonts are **locked** (Anton display, DM Sans body, Permanent Marker as the one-word accent). The palette
+is a **current default**: Alvin is still picking his own colours. Structure, layout, imagery rules and
+tests are locked.
 
 ---
 
@@ -56,13 +57,13 @@ on top of a photo that already glows.
 - **Objects as evidence:** an N4 taped to a door, a brass mailbox with a unit number, keys on a ledge,
   a rent cheque, an LTB envelope. Photographed like evidence, lit like a case file.
 
-### 1.3 Typography — two fonts, two jobs (Rule 02), plus an optional accent
+### 1.3 Typography — two fonts, two jobs (Rule 02), plus an optional accent — LOCKED
 
 | Role | Default | Rule |
 |---|---|---|
-| Display | Anton (heavy condensed) | Headlines and numerals only. All caps. Tight leading (0.92–0.96). |
-| Body | DM Sans | Eyebrow, body, captions, handle, source line. Zero personality by design. |
-| Accent (optional) | Permanent Marker (brush) | At most ONE word per slide, always in amber, always a word that carries the emotion. Alex's Level 2 allows a third "accent" face; the LA grid uses exactly this move. If in doubt, skip it and set the accent word in Anton amber instead. |
+| Display | Anton (heavy condensed) — locked | Headlines and numerals only. All caps. Tight leading (0.92–0.96). |
+| Body | DM Sans — locked | Eyebrow, body, captions, handle, source line. Zero personality by design. |
+| Accent (optional) | Permanent Marker (brush) — locked | At most ONE word per slide, always in amber, always a word that carries the emotion. Alex's Level 2 allows a third "accent" face; the LA grid uses exactly this move. If in doubt, skip it and set the accent word in Anton amber instead. |
 
 Export fallbacks: Impact for Anton, Arial for DM Sans, cursive for the brush.
 

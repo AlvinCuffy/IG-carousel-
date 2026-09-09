@@ -5,7 +5,7 @@ description: Build an on-system Instagram carousel for @goldenhorseshoewatch —
 
 # GHW Carousel
 
-DRAFT — becomes live once the palette and fonts are confirmed in `DESIGN-SYSTEM.md`.
+DRAFT — fonts are locked (Anton / DM Sans / one Permanent Marker word). Becomes live once the palette is confirmed in `DESIGN-SYSTEM.md`.
 
 Turns one idea-bank item into a finished, on-system carousel: copy per slide, tile type per slide,
 place image per slide, Higgsfield prompts, and the type layer laid into the locked template.
