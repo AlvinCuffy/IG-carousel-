@@ -1,0 +1,14 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",  "x": 0,    "y": 0, "w": 1080, "h": 1350, "title": "Cover" },
+    { "file": "Item.dc.html",  "x": 1180, "y": 0, "w": 1080, "h": 1350, "title": "Numbered item" },
+    { "file": "Story.dc.html", "x": 2360, "y": 0, "w": 1080, "h": 1350, "title": "Real case (no mark)" },
+    { "file": "Close.dc.html", "x": 3540, "y": 0, "w": 1080, "h": 1350, "title": "Close / CTA" }
+  ],
+  "annotations": [
+    { "id": "system-rules", "x": 0, "y": -420, "w": 520, "text": "THE SYSTEM (Grow with Alex method, applied to Golden Horseshoe Watch)\n\nThree colours, each with a job:\n• Background: charcoal #17140F\n• Primary text: off-white #F2ECE0\n• Accent (sparingly): amber #D4A24C\n\nTwo fonts: Anton (display, headlines only) + DM Sans (body, captions, numbers).\n\nOne layout, never changes: eyebrow + headline top zone · handle bottom-left · arrow bottom-right · 80px margins on 1080×1350." },
+    { "id": "art-and-tests", "x": 1180, "y": -420, "w": 520, "text": "ART RULE\nRaccoon detective + horseshoe glass appears on explainer / findings / checklist covers only. Never on real-case or story slides (see the Story artboard: text, one amber rule, no mark).\n\nHiggsfield renders the full-bleed art at 4:5 and this type layer sits on top. Keep the photo inside the three colours: charcoal shadow, amber lamp glow, off-white type. No stray blues or greens.\n\nBEFORE ANY SLIDE SHIPS\n• Shrink test: still legible at feed-thumbnail size?\n• Swap test: could this belong to any other account? If yes, it's not done.\n• Sourcing: every stat and story is Ontario / GTA real. Legal claims verified against the RTA or Tribunals Ontario before posting." },
+    { "id": "copy-status", "x": 2360, "y": -300, "w": 520, "text": "COPY STATUS\nCover + item 01 carry draft copy for \"5 Things Your Landlord CAN Legally Do\" (posting-order slot 3 in the idea bank). Draft only: run the sourcing pass before posting.\n\nBracketed text on the Story slide is a placeholder by design. Fill it only with a verified case." }
+  ],
+  "launch": { "view": "canvas" }
+}
