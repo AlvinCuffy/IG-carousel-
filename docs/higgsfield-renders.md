@@ -38,3 +38,26 @@ The covers above were typeset by the image model. Before posting, run the
 shrink and swap tests and confirm the type sits in the locked positions from
 `design/`. Anything the model misplaced gets the type layer re-done over the
 no-text base instead.
+
+## Monochrome place plates — 2026-09-09 23:06 batch (`nano_banana_flash`, 4:5, no text)
+
+| Job ID | Plate | Used on |
+|---|---|---|
+| `aff2f46d-0c91-4e4a-a8c6-64970d4fb20e` | Raccoon + horseshoe glass on a wet Mississauga sidewalk, twin towers behind | Cover |
+| `e0c46046-0a33-413d-8ab0-54521be1c3ea` | Mississauga brick walk-up, one window lit | Numbered item |
+| `a943cf59-0639-4574-924c-644539933792` | Hamilton brick cottage door, notice taped, porch bulb | Real case |
+| `59d21ff9-1423-4b78-961b-d3065746e19c` | Keys on a windowsill, GO platform blur behind | Close |
+
+## Finished slides — type layer composited in the Higgsfield sandbox (uploaded media)
+
+Rendered with `tools/render-slides.sh` at 1080×1350 with the real fonts (Anton, DM Sans,
+Permanent Marker) over the plates above. These are in the Higgsfield media library.
+
+| Media ID | Slide |
+|---|---|
+| `4bedf6d5-858f-4efa-aa60-824082e40baf` | 01 Cover — 5 things your landlord CAN legally do |
+| `e466baea-bb9e-4af8-8558-2c9873f817eb` | 02 Item 01 — 24 hours' written notice |
+| `d34d3b9a-d765-47e8-8c5b-7caecc090feb` | 03 Stat — 2.5% (LIGHT tile) |
+| `c13ad6e0-3a8b-4ff2-a310-170a89daed65` | 04 Turn — who does the law protect? (ACCENT tile) |
+| `5eb8a08c-b11c-4c25-b345-0c2634e238dd` | 05 Real case — the N4 said seven days (no mark) |
+| `27060ef6-c14c-49a0-a1da-abae70f21576` | 06 Close — save this before you need it |
