@@ -1,0 +1,35 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",      "x": 0,    "y": 0,    "w": 1080, "h": 1350, "title": "01 Cover" },
+    { "file": "Filing.dc.html",    "x": 1160, "y": 0,    "w": 1080, "h": 1350, "title": "02 Filing window" },
+    { "file": "Notice.dc.html",    "x": 2320, "y": 0,    "w": 1080, "h": 1350, "title": "03 Your notice period" },
+    { "file": "Myth.dc.html",      "x": 3480, "y": 0,    "w": 1080, "h": 1350, "title": "04 Myth check (light)" },
+    { "file": "Timeline.dc.html",  "x": 0,    "y": 1470, "w": 1080, "h": 1350, "title": "05 What sped up" },
+    { "file": "BothSides.dc.html", "x": 1160, "y": 1470, "w": 1080, "h": 1350, "title": "06 Both sides (accent)" },
+    { "file": "Closing.dc.html",   "x": 2320, "y": 1470, "w": 1080, "h": 1350, "title": "07 Close" }
+  ],
+  "annotations": [
+    {
+      "id": "verify-before-posting",
+      "x": 0,
+      "y": -420,
+      "w": 1600,
+      "text": "VERIFY BEFORE POSTING\n\nThree claims carry this carousel and none are sourced yet:\n\n1. That the landlord's filing window after an expired N4 is seven days, and what it was before.\n2. That an N4 for non-payment still gives a monthly tenant 14 days (RTA s. 59).\n3. That the change in question is actually Bill 60, under that name and in force.\n\nCheck all three at tribunalsontario.ca and ontario.ca/laws before this goes out. The account's own rule is that unverified claims ship as NEEDS VERIFICATION, never as fact."
+    },
+    {
+      "id": "plate-slots",
+      "x": 1760,
+      "y": -420,
+      "w": 1000,
+      "text": "PLATE SLOTS\n\nThe dashed and captioned zones are where the monochrome place photos drop in. Five plates are already rendered in Higgsfield — job IDs are in docs/higgsfield-renders.md under the Bill 60 batch.\n\nThis session cannot pull images down through the proxy, so they are described rather than embedded. Composite them with tools/render-slides.sh."
+    },
+    {
+      "id": "grid-rhythm",
+      "x": 2920,
+      "y": -420,
+      "w": 900,
+      "text": "GRID RHYTHM\n\nPHOTO · PHOTO · PHOTO · LIGHT · PHOTO · ACCENT · PHOTO\n\nThe cover is a PHOTO tile, which is what the last eight covers call for. The light tile lands at 04 and the accent at 06, so the run never doubles up."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}
