@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Horseshoe Watch — Carousel Dashboard</title>
+  <style>
+    :root {
+      --charcoal: #17140F;
+      --off-white: #F2ECE0;
+      --amber: #D4A24C;
+      --dark-gray: #2a2420;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--charcoal);
+      color: var(--off-white);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      border-bottom: 2px solid var(--amber);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 48px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--amber);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      background: var(--dark-gray);
+      padding: 20px;
+      border-left: 4px solid var(--amber);
+    }
+
+    .stat-number {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 36px;
+      color: var(--amber);
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--amber);
+      color: var(--charcoal);
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Anton', impact, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #e8b961;
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: var(--dark-gray);
+      color: var(--off-white);
+      border: 1px solid var(--amber);
+    }
+
+    .btn.secondary:hover {
+      background: var(--amber);
+      color: var(--charcoal);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .filter-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-right: 10px;
+    }
+
+    select {
+      background: var(--dark-gray);
+      color: var(--off-white);
+      border: 1px solid var(--amber);
+      padding: 8px 12px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .carousel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .carousel-card {
+      background: var(--dark-gray);
+      border: 1px solid #3a3430;
+      transition: all 0.3s;
+      overflow: hidden;
+    }
+
+    .carousel-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-4px);
+    }
+
+    .carousel-header {
+      background: var(--charcoal);
+      padding: 20px;
+      border-bottom: 1px solid var(--amber);
+    }
+
+    .carousel-title {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      word-break: break-word;
+    }
+
+    .carousel-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .carousel-date {
+      color: #aaa;
+    }
+
+    .carousel-status {
+      padding: 4px 8px;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+    }
+
+    .status-ready {
+      background: #4a7c59;
+      color: #e0f0e3;
+    }
+
+    .status-draft {
+      background: #6b5a47;
+      color: #f2ece0;
+    }
+
+    .status-posted {
+      background: #5a5a5a;
+      color: #b0b0b0;
+    }
+
+    .carousel-body {
+      padding: 20px;
+    }
+
+    .carousel-info {
+      margin-bottom: 15px;
+      font-size: 13px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #3a3430;
+    }
+
+    .info-label {
+      color: #aaa;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    .info-value {
+      color: var(--off-white);
+      font-weight: 500;
+    }
+
+    .info-value.amber {
+      color: var(--amber);
+    }
+
+    .slides-preview {
+      margin-bottom: 15px;
+    }
+
+    .slides-preview-label {
+      color: #aaa;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .slide-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .slide-thumb {
+      aspect-ratio: 9/11.25;
+      background: #3a3430;
+      border: 1px solid #4a4440;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+      padding: 4px;
+      cursor: help;
+      position: relative;
+    }
+
+    .slide-thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-thumb:hover {
+      border-color: var(--amber);
+      background: #4a4440;
+    }
+
+    .carousel-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--amber);
+      background: transparent;
+      color: var(--amber);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Anton', impact, sans-serif;
+    }
+
+    .action-btn:hover {
+      background: var(--amber);
+      color: var(--charcoal);
+    }
+
+    .action-btn.full {
+      background: var(--amber);
+      color: var(--charcoal);
+      flex: 2;
+    }
+
+    .action-btn.full:hover {
+      background: #e8b961;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #888;
+    }
+
+    .empty-state-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .empty-state h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-family: 'Anton', impact, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--dark-gray);
+      border: 1px solid var(--amber);
+      padding: 30px;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--amber);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .modal h2 {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .slide-detail {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #3a3430;
+      padding-bottom: 20px;
+    }
+
+    .slide-detail:last-child {
+      border-bottom: none;
+    }
+
+    .slide-detail img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .slide-detail-number {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 32px;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+
+    .slide-detail-title {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .slide-detail-body {
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--amber);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      background: var(--dark-gray);
+      padding: 12px;
+      text-align: left;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid var(--amber);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #3a3430;
+    }
+
+    tr:hover {
+      background: rgba(212, 162, 76, 0.05);
+    }
+
+    .footer {
+      border-top: 1px solid #3a3430;
+      padding-top: 30px;
+      margin-top: 50px;
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .quick-link-card {
+      background: var(--dark-gray);
+      border: 1px solid #3a3430;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .quick-link-card h3 {
+      font-family: 'Anton', impact, sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--amber);
+    }
+
+    .quick-link-card p {
+      font-size: 13px;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .link-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--amber);
+      color: var(--charcoal);
+      text-decoration: none;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+
+    .link-button:hover {
+      background: #e8b961;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="subtitle">@goldenhorseshoewatch</div>
+      <h1>Carousel Dashboard</h1>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="total-carousels">0</div>
+          <div class="stat-label">Total Carousels</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="ready-count">0</div>
+          <div class="stat-label">Ready to Post</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="total-slides">0</div>
+          <div class="stat-label">Slides Generated</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="section">
+      <h2 class="section-title">🎬 Your Carousels</h2>
+
+      <div class="controls">
+        <div class="filter-group">
+          <span class="filter-label">Filter:</span>
+          <select id="status-filter">
+            <option value="">All Statuses</option>
+            <option value="ready">Ready to Post</option>
+            <option value="draft">Draft</option>
+            <option value="posted">Posted</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">City:</span>
+          <select id="city-filter">
+            <option value="">All Cities</option>
+            <option value="Toronto">Toronto</option>
+            <option value="Mississauga">Mississauga</option>
+            <option value="Brampton">Brampton</option>
+            <option value="Hamilton">Hamilton</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="carousel-grid" id="carousel-grid">
+        <!-- Carousels will be populated here -->
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">📖 Resources</h2>
+      <div class="quick-links">
+        <div class="quick-link-card">
+          <h3>Design System</h3>
+          <p>Review the locked styles, colours, and layout rules</p>
+          <a href="DESIGN-SYSTEM.md" class="link-button">View System</a>
+        </div>
+        <div class="quick-link-card">
+          <h3>Signal Imagery</h3>
+          <p>Browse the place library and Higgsfield prompts</p>
+          <a href="docs/signal-imagery.md" class="link-button">View Library</a>
+        </div>
+        <div class="quick-link-card">
+          <h3>Render History</h3>
+          <p>Check past renders and Higgsfield job IDs</p>
+          <a href="docs/higgsfield-renders.md" class="link-button">View History</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">✅ Next Steps</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Select Idea</strong></td>
+              <td>Pick the next idea from the idea bank to develop into a carousel</td>
+              <td>Ready</td>
+            </tr>
+            <tr>
+              <td><strong>2. Build Carousel</strong></td>
+              <td>Run <code>/ghw-carousel</code> to generate the full design and copy</td>
+              <td>Ready</td>
+            </tr>
+            <tr>
+              <td><strong>3. Generate Images</strong></td>
+              <td>Use Higgsfield to render place plates for each slide</td>
+              <td>Ready</td>
+            </tr>
+            <tr>
+              <td><strong>4. Compose Slides</strong></td>
+              <td>Overlay type layers using <code>render-slides.sh</code> in Higgsfield sandbox</td>
+              <td>Ready</td>
+            </tr>
+            <tr>
+              <td><strong>5. Pre-flight Check</strong></td>
+              <td>Verify colours, fonts, layout, and grid rhythm before posting</td>
+              <td>Ready</td>
+            </tr>
+            <tr>
+              <td><strong>6. Post to Instagram</strong></td>
+              <td>Upload carousel to @goldenhorseshoewatch and schedule</td>
+              <td>Manual</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Golden Horseshoe Watch — Carousel Design System v2</p>
+      <p style="margin-top: 10px; font-size: 11px;">Saved carousels and renders are stored in your local project directory. This dashboard reads from your existing slides and metadata.</p>
+    </div>
+  </div>
+
+  <!-- Carousel Detail Modal -->
+  <div id="carousel-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-slides"></div>
+      <div id="modal-info"></div>
+    </div>
+  </div>
+
+  <script>
+    // Sample carousel data structure for demonstration
+    const carousels = [
+      {
+        id: 1,
+        title: "Mississauga Rent Control Q&A",
+        city: "Mississauga",
+        status: "ready",
+        date: "2026-09-09",
+        slideCount: 6,
+        slides: [
+          { number: "Cover", type: "PHOTO", headline: "Rent Going Up?", amber: "Mississauga", body: "" },
+          { number: "1", type: "PHOTO", headline: "What the Law Says", body: "Guidelines for annual increases in Ontario" },
+          { number: "2", type: "PHOTO", headline: "Your Rights", body: "Four key protections renters have" },
+          { number: "3", type: "LIGHT", headline: "60% of units covered", amber: "Know the rules", body: "" },
+          { number: "4", type: "ACCENT", headline: "Both Sides", body: "Landlord limits / Tenant protections" },
+          { number: "Close", type: "PHOTO", headline: "Save this before you need it", body: "@goldenhorseshoewatch" }
+        ],
+        sourceFile: "data/carousels/mississauga-rent-control.json"
+      },
+      {
+        id: 2,
+        title: "Hamilton N4 Eviction Process",
+        city: "Hamilton",
+        status: "draft",
+        date: "2026-09-02",
+        slideCount: 5,
+        slides: [
+          { number: "Cover", type: "PHOTO", headline: "Getting an N4?", amber: "Here's what to do", body: "" },
+          { number: "1", type: "PHOTO", headline: "What it means", body: "The first step in a formal eviction" },
+          { number: "2", type: "PHOTO", headline: "14 days to respond", body: "Your timeline and options" },
+          { number: "3", type: "LIGHT", headline: "Only $150 to file", amber: "at the LTB", body: "" },
+          { number: "Close", type: "PHOTO", headline: "Know your rights", body: "@goldenhorseshoewatch" }
+        ],
+        sourceFile: "data/carousels/hamilton-n4-process.json"
+      },
+      {
+        id: 3,
+        title: "Toronto Habitability Standards",
+        city: "Toronto",
+        status: "posted",
+        date: "2026-08-28",
+        slideCount: 7,
+        slides: [
+          { number: "Cover", type: "PHOTO", headline: "Is Your Unit Livable?", amber: "Check these 8", body: "" },
+          { number: "1", type: "PHOTO", headline: "Heat (Oct-May)", body: "Minimum 20°C between 6am-11pm" },
+          { number: "2", type: "PHOTO", headline: "Water", body: "Hot and cold, year-round" },
+          { number: "3", type: "ACCENT", headline: "Repairs", amber: "Your landlord's job", body: "" },
+          { number: "4", type: "LIGHT", headline: "8 standards to know", amber: "Ontario law", body: "" },
+          { number: "5", type: "PHOTO", headline: "Report violations", body: "Call Service Ontario or file an N11 claim" },
+          { number: "Close", type: "PHOTO", headline: "Everyone deserves safe housing", body: "@goldenhorseshoewatch" }
+        ],
+        sourceFile: "data/carousels/toronto-habitability.json"
+      }
+    ];
+
+    // Initialize dashboard
+    function init() {
+      renderCarousels(carousels);
+      updateStats();
+    }
+
+    function renderCarousels(items) {
+      const grid = document.getElementById('carousel-grid');
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1;">
+            <div class="empty-state">
+              <div class="empty-state-icon">📭</div>
+              <h2>No Carousels Yet</h2>
+              <p>Your finished carousels will appear here once you run the carousel builder.</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = items.map(carousel => `
+        <div class="carousel-card">
+          <div class="carousel-header">
+            <div class="carousel-title">${carousel.title}</div>
+            <div class="carousel-meta">
+              <span class="carousel-date">${carousel.date}</span>
+              <span class="carousel-status status-${carousel.status}">${carousel.status}</span>
+            </div>
+          </div>
+          <div class="carousel-body">
+            <div class="carousel-info">
+              <div class="info-row">
+                <span class="info-label">City</span>
+                <span class="info-value">${carousel.city}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Slides</span>
+                <span class="info-value amber">${carousel.slideCount}</span>
+              </div>
+            </div>
+
+            <div class="slides-preview">
+              <span class="slides-preview-label">Slides</span>
+              <div class="slide-thumbnails">
+                ${carousel.slides.slice(0, 6).map((slide, i) => `
+                  <div class="slide-thumb" title="${slide.headline}">
+                    <div>${slide.number === 'Cover' ? '🎬' : slide.number === 'Close' ? '✓' : slide.number}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="carousel-actions">
+              <button class="action-btn" onclick="viewCarousel(${carousel.id})">View All</button>
+              <button class="action-btn full" onclick="shareCarousel(${carousel.id}, '${carousel.title}')">Share / Post</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function viewCarousel(id) {
+      const carousel = carousels.find(c => c.id === id);
+      if (!carousel) return;
+
+      const modal = document.getElementById('carousel-modal');
+      document.getElementById('modal-title').textContent = carousel.title;
+
+      const slidesHtml = carousel.slides.map((slide, i) => `
+        <div class="slide-detail">
+          <div class="slide-detail-number">${slide.number}</div>
+          <div class="slide-detail-title">${slide.headline}</div>
+          ${slide.body ? `<div class="slide-detail-body">${slide.body}</div>` : ''}
+          ${slide.amber ? `<div style="color: #D4A24C; margin-top: 8px; font-family: 'Anton'; font-size: 14px;">${slide.amber}</div>` : ''}
+          <div style="margin-top: 10px; font-size: 11px; color: #888;">Tile type: ${slide.type}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('modal-slides').innerHTML = slidesHtml;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('carousel-modal').classList.remove('active');
+    }
+
+    function shareCarousel(id, title) {
+      const carousel = carousels.find(c => c.id === id);
+      alert(`📤 Sharing "${title}"\n\nTo post to Instagram:\n\n1. Use the "View All" button to see all slides\n2. Export each slide as PNG\n3. Upload to Instagram as a carousel\n\nFile location: ${carousel.sourceFile}`);
+    }
+
+    function updateStats() {
+      document.getElementById('total-carousels').textContent = carousels.length;
+      document.getElementById('ready-count').textContent = carousels.filter(c => c.status === 'ready').length;
+      document.getElementById('total-slides').textContent = carousels.reduce((sum, c) => sum + c.slideCount, 0);
+    }
+
+    // Filter functionality
+    document.getElementById('status-filter').addEventListener('change', filterCarousels);
+    document.getElementById('city-filter').addEventListener('change', filterCarousels);
+
+    function filterCarousels() {
+      const statusFilter = document.getElementById('status-filter').value;
+      const cityFilter = document.getElementById('city-filter').value;
+
+      const filtered = carousels.filter(c => {
+        const statusMatch = !statusFilter || c.status === statusFilter;
+        const cityMatch = !cityFilter || c.city === cityFilter;
+        return statusMatch && cityMatch;
+      });
+
+      renderCarousels(filtered);
+    }
+
+    // Close modal on background click
+    document.getElementById('carousel-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'carousel-modal') {
+        closeModal();
+      }
+    });
+
+    // Initialize
+    init();
+  </script>
+</body>
+</html>
