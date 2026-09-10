@@ -48,10 +48,26 @@ no-text base instead.
 | `a943cf59-0639-4574-924c-644539933792` | Hamilton brick cottage door, notice taped, porch bulb | Real case |
 | `59d21ff9-1423-4b78-961b-d3065746e19c` | Keys on a windowsill, GO platform blur behind | Close |
 
+## Monochrome place plates — 2026-09-10 06:35 batch (`gpt_image_2`, 4:5, no text) — BILL 60 carousel
+
+| Job ID | Plate | Used on |
+|---|---|---|
+| `938b4716-2acc-4a16-b89b-ee427b0ba8de` | N-form notice taped to a residential door, tungsten light | Cover |
+| `5e76b3b9-9f42-43ec-a185-d340532673dd` | Service Ontario counter interior at dusk | Item 1 |
+| `330db02f-9937-4ff2-8b34-28d8749e0e6c` | N4 notice letter unfolded on a wooden table | Item 2 |
+| `03a4888d-4bde-46d5-a863-6d3e68ab1c20` | GO Transit platform at dusk with metal bench | Item 4 |
+| `49cf3dae-cb16-4739-ab27-7e93aae505b8` | Keys on a windowsill with GO platform behind | Close |
+
 ## Finished slides — type layer composited in the Higgsfield sandbox (uploaded media)
 
 Rendered with `tools/render-slides.sh` at 1080×1350 with the real fonts (Anton, DM Sans,
 Permanent Marker) over the plates above. These are in the Higgsfield media library.
+
+### Bill 60: 7 Days to File carousel (IN PROGRESS)
+
+Type layers being rendered over plates above. Will update with media IDs once composited.
+
+### Previous carousel — 5 Things Your Landlord CAN Legally Do
 
 | Media ID | Slide |
 |---|---|
